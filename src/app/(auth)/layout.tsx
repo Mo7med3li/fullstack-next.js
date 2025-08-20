@@ -3,5 +3,5 @@ export default function AuthRooTLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return { children };
+  return children;
 }
