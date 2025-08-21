@@ -34,7 +34,7 @@ export const fetcher = async <TResponse, TBody = unknown>({
 
 export const register = (user: RegisterForm) => {
   return fetcher({
-    url: "/api/register",
+    url: `${process.env.NEXT_PUBLIC_API_URL}/register`,
     method: "POST",
     body: user,
   });
@@ -42,7 +42,7 @@ export const register = (user: RegisterForm) => {
 
 export const signin = (user: SigninForm) => {
   return fetcher({
-    url: "/api/signin",
+    url: `${process.env.NEXT_PUBLIC_API_URL}/signin`,
     method: "POST",
     body: user,
   });
