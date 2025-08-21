@@ -1,4 +1,3 @@
-// app/api/signin/route.ts
 import { comparePassword, createJWT } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { cookies } from "next/headers";
@@ -21,7 +20,10 @@ export async function POST(req: Request) {
     const isValid = await comparePassword(body.password, user.password);
 
     if (!isValid) {
-      return NextResponse.json({ error: "Invalid login" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Wrong email or password " },
+        { status: 401 }
+      );
     }
 
     const jwt = await createJWT(user);

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import GlassPane from "@/components/glass-pane";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <GlassPane className="w-full h-full flex items-center justify-center">
             {children}
           </GlassPane>
+          <Toaster />
         </main>
       </body>
     </html>

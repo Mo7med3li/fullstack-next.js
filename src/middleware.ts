@@ -8,7 +8,6 @@ const verifyJWT = async (jwt: string) => {
     jwt,
     new TextEncoder().encode(process.env.JWT_SECRET!)
   );
-
   return payload;
 };
 
@@ -21,10 +20,8 @@ export default async function middleware(req: NextRequest) {
     if (jwt) {
       req.nextUrl.pathname = "/home";
       return NextResponse.redirect(req.nextUrl);
-    } else {
-      req.nextUrl.pathname = "/signin";
-      return NextResponse.redirect(req.nextUrl);
     }
+    return NextResponse.next();
   }
 
   if (!jwt) {

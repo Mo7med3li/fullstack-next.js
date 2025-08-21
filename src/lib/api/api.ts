@@ -21,7 +21,14 @@ export const fetcher = async <TResponse, TBody = unknown>({
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch");
+    let errorMsg = "Something went wrong";
+    try {
+      const errorData = await res.json();
+      errorMsg = errorData.error || JSON.stringify(errorData);
+    } catch {
+      // ignore parsing error
+    }
+    throw new Error(errorMsg);
   }
 
   if (json) {

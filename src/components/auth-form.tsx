@@ -15,6 +15,7 @@ import { Input } from "./ui/input";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const initial = { email: "", password: "", firstName: "", lastName: "" };
 
@@ -30,11 +31,23 @@ const AuthForm = ({ mode }: { mode: string }) => {
     e.preventDefault();
 
     if (mode === "register") {
-      await register(formState);
-      router.push("/signin");
+      try {
+        await register(formState);
+        toast.success("Account created successfully");
+        router.push("/signin");
+      } catch (e) {
+        console.log(e);
+
+        toast.error((e as Error)?.message || "Registration failed");
+      }
     } else {
-      await signin(formState);
-      router.push("/home");
+      try {
+        await signin(formState);
+        toast.success("Login success");
+        router.push("/home");
+      } catch (e) {
+        toast.error((e as Error)?.message || "Login failed");
+      }
     }
     setFormState({ ...initial });
   };
