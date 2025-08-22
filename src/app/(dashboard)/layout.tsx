@@ -1,7 +1,14 @@
+import Sidebar from "@/components/sidebar";
+
 export default function DashboardRootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <div className="grid grid-cols-7 w-full h-full p-5 candy-mesh">
+      <Sidebar />
+      <div className="col-span-6 p-2 h-full">{children}</div>
+    </div>
+  );
 }

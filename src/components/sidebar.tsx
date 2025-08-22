@@ -10,27 +10,18 @@ const links = [
 
 const Sidebar = () => {
   return (
-    <Card className="py-5">
+    <Card className="py-5 h-full">
       <CardHeader>
         <CardTitle className="text-center">Card Title</CardTitle>
-        {/* <CardDescription>Card Description</CardDescription> */}
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-10 items-center ">
         <div className="w-full flex justify-center items-center gap-2">
-          {/* <Image
-          src={logo}
-          alt="Able logo"
-          priority
-          className="w-14"
-        /> */}
+          {/* <Image/> */}
         </div>
         {links.map((link) => (
           <SidebarLink key={link.link} link={link} />
         ))}
       </CardContent>
-      {/* <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter> */}
     </Card>
   );
 };
