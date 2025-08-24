@@ -1,26 +1,34 @@
+"use client";
+
+import LogoutButton from "./logout";
 import SidebarLink from "./sidebar-links";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Building2 } from "lucide-react";
 
 const links = [
-  { label: "Home", icon: "Grid", link: "/home" },
-  { label: "Calendar", icon: "Calendar", link: "/project" },
+  { label: "Home", icon: "Home", link: "/home" },
+  { label: "Projects", icon: "Grid", link: "/project" },
   { label: "Profile", icon: "User", link: "/profile" },
-  { label: "Settings", icon: "Settings", link: "/settings" },
 ];
 
 const Sidebar = () => {
   return (
-    <Card className="py-5 h-full">
-      <CardHeader>
-        <CardTitle className="text-center">Card Title</CardTitle>
+    <Card className="h-full border-sidebar-border bg-sidebar">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center gap-2 text-white">
+          <Building2 className="h-6 w-6 text-white" />
+          <span className="text-lg font-bold text-white">ProjectTask</span>
+        </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-10 items-center ">
-        <div className="w-full flex justify-center items-center gap-2">
-          {/* <Image/> */}
+      <CardContent className="flex flex-col gap-2 px-4">
+        <nav className="space-y-1">
+          {links.map((link) => (
+            <SidebarLink key={link.link} link={link} />
+          ))}
+        </nav>
+        <div className="mt-auto pt-4">
+          <LogoutButton />
         </div>
-        {links.map((link) => (
-          <SidebarLink key={link.link} link={link} />
-        ))}
       </CardContent>
     </Card>
   );

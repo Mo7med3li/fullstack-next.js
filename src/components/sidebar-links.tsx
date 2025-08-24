@@ -1,32 +1,41 @@
 "use client";
 
-import clsx from "clsx";
-import { Calendar, Grid, Settings, User, LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-interface SidebarLinksProps {
+import { cn } from "@/lib/utils";
+import { Home, Calendar, User, Grid } from "lucide-react";
+
+interface SidebarLinkProps {
   link: {
     label: string;
     icon: string;
     link: string;
   };
 }
-const icons: Record<string, LucideIcon> = { Calendar, Grid, Settings, User };
-const SidebarLink = ({ link }: SidebarLinksProps) => {
-  const pathName = usePathname();
-  const isActive = pathName == link.link ? true : false;
-  const Icon = icons[link.icon];
-  return (
-    <Link href={link.link}>
-      <Icon
-        size={40}
-        className={clsx(
-          "stroke-gray-400  hover:stroke-zinc-800 transition duration-200 ease-in-out",
-          isActive && "stroke-zinc-800"
-        )}
-      />
-    </Link>
-  );
+
+const iconMap = {
+  Grid: Grid,
+  Calendar: Calendar,
+  User: User,
+  Home: Home,
 };
 
-export default SidebarLink;
+export default function SidebarLink({ link }: SidebarLinkProps) {
+  const pathname = usePathname();
+  const isActive = pathname === link.link;
+  const IconComponent = iconMap[link.icon as keyof typeof iconMap] || Home;
+
+  return (
+    <Link
+      href={link.link}
+      className={cn(
+        "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 w-full text-white",
+        "hover:bg-sidebar-accent hover:text-zinc-800",
+        isActive ? "bg-zinc-800  shadow-sm" : "text-white"
+      )}
+    >
+      <IconComponent className="h-5 w-5" />
+      <span className="font-medium">{link.label}</span>
+    </Link>
+  );
+}

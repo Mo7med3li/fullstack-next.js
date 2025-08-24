@@ -63,3 +63,10 @@ export const createNewProject = async (name: string) => {
     json: true,
   });
 };
+
+export const logout = () => {
+  return fetcher({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/logout`,
+    method: "POST",
+  });
+};
