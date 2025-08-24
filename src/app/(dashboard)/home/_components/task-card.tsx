@@ -42,7 +42,7 @@ export default async function TasksCard({
   };
 
   return (
-    <Card className="w-full mx-auto shadow-sm">
+    <Card className="w-full mx-auto shadow-sm bg-transparent">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           {/* Title */}
@@ -57,10 +57,10 @@ export default async function TasksCard({
         <Separator className="mt-4" />
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 bg-transparent">
         {/* Tasks */}
         {tasksList && tasksList.length ? (
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             {tasksList.map((singleTask) => {
               const statusConfig = getStatusConfig(singleTask.status);
               const StatusIcon = statusConfig.icon;
@@ -68,7 +68,7 @@ export default async function TasksCard({
               return (
                 <Card
                   key={singleTask.id}
-                  className="p-4 hover:shadow-md transition-shadow border-l-4 border-l-primary/20"
+                  className="p-4 hover:shadow-md transition-shadow border-l-4 border-l-primary/20 bg-transparent"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 space-y-2">

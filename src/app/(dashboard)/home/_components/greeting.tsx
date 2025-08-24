@@ -8,8 +8,8 @@ const Greeting = async () => {
 
   return (
     <div className="w-full space-y-6">
-      <Card className="relative overflow-hidden bg-gradient-to-br from-white to-gray-50 border-0 shadow-lg">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-emerald-50/50" />
+      <Card className="relative overflow-hidden bg-transparent border-0 shadow-lg">
+        <div className="absolute inset-0" />
         <div className="relative p-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
