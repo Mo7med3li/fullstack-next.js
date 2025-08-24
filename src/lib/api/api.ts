@@ -54,3 +54,12 @@ export const signin = (user: SigninForm) => {
     body: user,
   });
 };
+
+export const createNewProject = async (name: string) => {
+  return fetcher({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/create-project`,
+    method: "POST",
+    body: { name },
+    json: true,
+  });
+};

@@ -12,7 +12,7 @@ export default async function TasksCard({
   title,
 }: {
   tasks?: Task[];
-  title: string | undefined;
+  title?: string | undefined;
 }) {
   // Fetch tasks
   const tasksList = tasks || (await getTasks());

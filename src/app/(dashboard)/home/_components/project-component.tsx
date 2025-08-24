@@ -1,8 +1,7 @@
 import Link from "next/link";
 import fetchProjects from "../_api/get-projecrts";
 import ProjectCard from "./project-card";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import NewProjectModal from "../../project/[id]/_components/new-project-modal";
 
 const ProjectComponent = async () => {
   // Fetch projects
@@ -19,10 +18,7 @@ const ProjectComponent = async () => {
         ))}
       </div>
       {/* Add new */}
-      <Button>
-        <Plus />
-        Add new Project
-      </Button>
+      <NewProjectModal />
     </div>
   );
 };
