@@ -7,9 +7,15 @@ import { getTasks } from "../_api/get-tasks";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-export default async function TasksCard() {
+export default async function TasksCard({
+  tasks,
+  title,
+}: {
+  tasks?: Task[];
+  title: string | undefined;
+}) {
   // Fetch tasks
-  const tasks = await getTasks();
+  const tasksList = tasks || (await getTasks());
 
   const getStatusConfig = (status: TASK_STATUS) => {
     // Check Status
@@ -41,7 +47,7 @@ export default async function TasksCard() {
         <div className="flex items-center justify-between">
           {/* Title */}
           <CardTitle className="text-2xl font-semibold text-foreground">
-            My Tasks
+            {title || "My Tasks"}
           </CardTitle>
           <Button className="gap-2 hover:scale-105 transition-transform">
             <Plus className="h-4 w-4" />
@@ -53,15 +59,15 @@ export default async function TasksCard() {
 
       <CardContent className="space-y-4">
         {/* Tasks */}
-        {tasks && tasks.length ? (
+        {tasksList && tasksList.length ? (
           <div className="space-y-4">
-            {tasks.map((task) => {
-              const statusConfig = getStatusConfig(task.status);
+            {tasksList.map((singleTask) => {
+              const statusConfig = getStatusConfig(singleTask.status);
               const StatusIcon = statusConfig.icon;
 
               return (
                 <Card
-                  key={task.id}
+                  key={singleTask.id}
                   className="p-4 hover:shadow-md transition-shadow border-l-4 border-l-primary/20"
                 >
                   <div className="flex items-start justify-between gap-4">
@@ -69,19 +75,19 @@ export default async function TasksCard() {
                       <div className="flex items-center gap-3">
                         <StatusIcon className="h-5 w-5 text-primary" />
                         <h3 className="font-semibold text-card-foreground">
-                          {task.name}
+                          {singleTask.name}
                         </h3>
                       </div>
 
                       <p className="text-sm text-muted-foreground leading-relaxed ml-8">
-                        {task.description}
+                        {singleTask.description}
                       </p>
 
-                      {task.due && (
+                      {singleTask.due && (
                         <div className="flex items-center gap-2 ml-8">
                           <Clock className="h-3 w-3 text-muted-foreground" />
                           <span className="text-xs text-muted-foreground italic">
-                            Due: {new Date(task.due).toLocaleDateString()}
+                            Due: {new Date(singleTask.due).toLocaleDateString()}
                           </span>
                         </div>
                       )}
