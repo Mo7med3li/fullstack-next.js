@@ -17,7 +17,7 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
   const progress = Math.ceil((completedCount / project.tasks.length) * 100);
 
   return (
-    <div className="!px-6 !py-8 hover:scale-105 transition-all ease-in-out duration-200">
+    <div className="!px-6 !py-6 hover:scale-105 transition-all ease-in-out duration-200 bg-white rounded-2xl">
       <div>
         {/* Date */}
         <span className="text-sm text-gray-300">
