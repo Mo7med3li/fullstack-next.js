@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Calendar } from "lucide-react";
 import getData from "../_api/get-user-data";
 
 const Greeting = async () => {
@@ -7,22 +7,36 @@ const Greeting = async () => {
   const user = await getData();
 
   return (
-    <Card className="w-full py-4 relative p-2">
-      <div className="mb-4">
-        {/* Name */}
-        <h1 className="text-3xl text-gray-700 font-bold mb-4">
-          Hello, {user?.firstName}!
-        </h1>
-        {/* Description */}
-        <h4 className="text-xl text-gray-400">
-          Check your daily tasks and schedule
-        </h4>
-      </div>
-      {/* Action */}
-      <div>
-        <Button size="lg">Today Schedule</Button>
-      </div>
-    </Card>
+    <div className="w-full space-y-6">
+      <Card className="relative overflow-hidden bg-gradient-to-br from-white to-gray-50 border-0 shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-emerald-50/50" />
+        <div className="relative p-8">
+          <div className="flex items-start justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-8 bg-zinc-800 rounded-full" />
+                <h1 className="text-4xl font-bold text-zinc-800">
+                  Welcome back, {user?.firstName}!
+                </h1>
+              </div>
+              <p className="text-lg text-gray-600 max-w-md">
+                Ready to tackle your day? Here&apos;s what you have planned.
+              </p>
+            </div>
+            <div className="hidden md:flex items-center gap-2 bg-emerald-100 px-4 py-2 rounded-full">
+              <Calendar className="w-4 h-4 text-emerald-600" />
+              <span className="text-sm font-medium text-emerald-600">
+                {new Date().toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </span>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 };
 

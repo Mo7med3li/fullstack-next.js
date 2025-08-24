@@ -49,7 +49,7 @@ export default async function TasksCard({
           <CardTitle className="text-2xl font-semibold text-foreground">
             {title || "My Tasks"}
           </CardTitle>
-          <Button className="gap-2 hover:scale-105 transition-transform">
+          <Button className="gap-2 hover:scale-105 transition-transform bg-zinc-800">
             <Plus className="h-4 w-4" />
             Create Task
           </Button>
