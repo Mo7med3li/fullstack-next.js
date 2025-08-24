@@ -17,17 +17,13 @@ export default function page() {
 
         <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3">
           {/* Projects */}
-          <Suspense fallback={"projects loading...."}>
-            <ProjectComponent />
-          </Suspense>
+          <ProjectComponent />
         </div>
 
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full">
             {/* TasksCards  */}
-            <Suspense fallback={"tasks loading...."}>
-              <TasksCard />
-            </Suspense>
+            <TasksCard />
           </div>
         </div>
       </div>
