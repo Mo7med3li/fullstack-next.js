@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
 import { Plus } from "lucide-react";
 import { createNewProject } from "@/lib/api/api";
 import { useRouter } from "next/navigation";
@@ -22,6 +21,7 @@ const NewProjectModal = () => {
 
   //   Navigation
   const router = useRouter();
+
   //   Handle Submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,12 +36,12 @@ const NewProjectModal = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="hover:scale-105 transition-all ease-in-out duration-200">
+        <Button className="hover:scale-105 transition-all ease-in-out duration-200 w-full bg-zinc-800">
           <Plus /> New Project
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md w-full">
         <DialogHeader>
           <DialogTitle>New Project</DialogTitle>
         </DialogHeader>

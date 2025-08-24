@@ -21,8 +21,8 @@ const SidebarLink = ({ link }: SidebarLinksProps) => {
       <Icon
         size={40}
         className={clsx(
-          "stroke-gray-400  hover:stroke-violet-600 transition duration-200 ease-in-out",
-          isActive && "stroke-violet-600"
+          "stroke-gray-400  hover:stroke-zinc-800 transition duration-200 ease-in-out",
+          isActive && "stroke-zinc-800"
         )}
       />
     </Link>

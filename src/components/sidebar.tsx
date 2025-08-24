@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const links = [
   { label: "Home", icon: "Grid", link: "/home" },
-  { label: "Calendar", icon: "Calendar", link: "/Project" },
+  { label: "Calendar", icon: "Calendar", link: "/project" },
   { label: "Profile", icon: "User", link: "/profile" },
   { label: "Settings", icon: "Settings", link: "/settings" },
 ];
