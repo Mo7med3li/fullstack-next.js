@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import Greeting from "./_components/greeting";
 import GreetingsSkeleton from "@/lib/skeleton/greeting.skeleton";
 import ProjectComponent from "./_components/project-component";
+import TasksCard from "./_components/task-card";
 
 export default function page() {
   return (
@@ -15,14 +16,19 @@ export default function page() {
         </div>
 
         <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3">
+          {/* Projects */}
           <Suspense fallback={"projects loading...."}>
             <ProjectComponent />
           </Suspense>
-          <div className="w-1/3 p-3">{/* <NewProject /> */}</div>
         </div>
 
         <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full">{/* <TasksCard /> */}</div>
+          <div className="w-full">
+            {/* TasksCards  */}
+            <Suspense fallback={"tasks loading...."}>
+              <TasksCard />
+            </Suspense>
+          </div>
         </div>
       </div>
     </div>
