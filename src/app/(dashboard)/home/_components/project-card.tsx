@@ -1,7 +1,8 @@
 import formatDate from "@/lib/utils/date-format";
 import { Prisma, TASK_STATUS } from "@prisma/client";
-import { Calendar, CheckCircle2, TrendingUp } from "lucide-react";
+import { Calendar, CheckCircle2, TrendingUp, Plus } from "lucide-react";
 import { FC } from "react";
+import NewTaskModal from "@/components/new-task-modal";
 
 export const projectWithTasks = Prisma.validator<Prisma.ProjectDefaultArgs>()({
   include: { tasks: true },
@@ -25,7 +26,7 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
 
   return (
     <div
-      className={`group relative border border-border rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${colorClass}`}
+      className={`group relative border border-border rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white dark:bg-gray-800 ${colorClass}`}
     >
       <div className="absolute top-0 left-0 right-0 h-1 bg-muted rounded-t-xl overflow-hidden">
         <div
@@ -39,6 +40,17 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
           <Calendar className="w-4 h-4" />
           <span>{formatDate(project.createdAt)}</span>
         </div>
+
+        {/* Quick Create Task Button */}
+        <NewTaskModal
+          projectId={project.id}
+          projectName={project.name}
+          trigger={
+            <button className="p-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-colors duration-200 group-hover:scale-110">
+              <Plus className="h-3.5 w-3.5" />
+            </button>
+          }
+        />
       </div>
 
       <div className="mb-4">

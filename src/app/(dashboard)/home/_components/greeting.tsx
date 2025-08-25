@@ -8,13 +8,13 @@ const Greeting = async () => {
 
   return (
     <div className="w-full space-y-6">
-      <Card className="relative overflow-hidden bg-transparent border-0 shadow-lg">
+      <Card className="relative overflow-hidden bg-white dark:bg-gray-800 border-0 shadow-lg">
         <div className="absolute inset-0" />
         <div className="relative p-8">
           <div className="flex items-start justify-between">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-1 h-8 bg-blue-600 rounded-full" />
+                <div className="w-1 h-8 bg-blue-600 dark:bg-blue-400 rounded-full" />
                 <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">
                   Welcome back, {user?.firstName}!
                 </h1>

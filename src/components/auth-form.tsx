@@ -56,7 +56,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
   const content = mode === "register" ? registerContent : signContent;
 
   return (
-    <Card className="shadow-lg shadow-gray-200/50 bg-white dark:bg-gray-800 p-4">
+    <Card className="shadow-lg shadow-gray-200/50 bg-white dark:bg-gray-800 p-4 border-gray-200 dark:border-gray-700">
       {/* Header */}
       <CardHeader>
         {/* Title */}
@@ -88,7 +88,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
                   required
                   placeholder="First Name"
                   value={formState.firstName}
-                  className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
+                  className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   onChange={(e) =>
                     setFormState((s) => ({ ...s, firstName: e.target.value }))
                   }
@@ -103,7 +103,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
                   required
                   placeholder="Last Name"
                   value={formState.lastName}
-                  className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
+                  className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   onChange={(e) =>
                     setFormState((s) => ({ ...s, lastName: e.target.value }))
                   }
@@ -121,7 +121,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
               type="email"
               placeholder="Email"
               value={formState.email}
-              className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
+              className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
               onChange={(e) =>
                 setFormState((s) => ({ ...s, email: e.target.value }))
               }
@@ -137,7 +137,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
               value={formState.password}
               type="password"
               placeholder="Password"
-              className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100"
+              className="border-solid border-gray-300 dark:border-gray-600 border-2 px-6 py-2 text-lg rounded-3xl w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
               onChange={(e) =>
                 setFormState((s) => ({ ...s, password: e.target.value }))
               }
@@ -158,7 +158,7 @@ const AuthForm = ({ mode }: { mode: string }) => {
             {/* ActionBtn */}
             <div className="-order-1 md:order-none w-full md:w-auto">
               <Button
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
                 type="submit"
               >
                 {content.buttonText}

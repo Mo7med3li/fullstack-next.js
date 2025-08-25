@@ -64,6 +64,20 @@ export const createNewProject = async (name: string) => {
   });
 };
 
+export const createNewTask = async (taskData: {
+  name: string;
+  projectId: string;
+  description?: string;
+  due?: string;
+}) => {
+  return fetcher({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/create-task`,
+    method: "POST",
+    body: taskData,
+    json: true,
+  });
+};
+
 export const logout = () => {
   return fetcher({
     url: `${process.env.NEXT_PUBLIC_API_URL}/logout`,
