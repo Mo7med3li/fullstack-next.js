@@ -94,6 +94,15 @@ export const deleteTask = async (taskId: string) => {
   });
 };
 
+export const updateTaskStatus = async (taskId: string, status: string) => {
+  return fetcher({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/update-task-status`,
+    method: "PATCH",
+    body: { taskId, status },
+    json: true,
+  });
+};
+
 export const logout = () => {
   return fetcher({
     url: `${process.env.NEXT_PUBLIC_API_URL}/logout`,

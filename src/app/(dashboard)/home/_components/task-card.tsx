@@ -10,6 +10,9 @@ import { Separator } from "@/components/ui/separator";
 import NewTaskModal from "@/components/new-task-modal";
 import NewProjectModal from "../../project/[id]/_components/new-project-modal";
 import DeleteTaskModal from "@/components/delete-task-modal";
+import { updateTaskStatus } from "@/lib/api/api";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 export default function TasksCard({
   tasks,
   title,
@@ -23,6 +26,7 @@ export default function TasksCard({
   projectName?: string;
   hasProjects?: boolean;
 }) {
+  const router = useRouter();
   const [tasksList, setTasksList] = useState<Task[]>(tasks || []);
 
   // Update tasks when props change (after new task creation)
@@ -33,6 +37,40 @@ export default function TasksCard({
   const handleOptimisticDelete = (taskId: string) => {
     // Optimistically remove from UI
     setTasksList(prev => prev.filter(task => task.id !== taskId));
+  };
+
+  const handleStatusChange = async (taskId: string, newStatus: TASK_STATUS) => {
+    try {
+      const currentTask = tasksList.find(task => task.id === taskId);
+      
+      if (newStatus === TASK_STATUS.COMPLETED) {
+        // Show completion toast
+        toast.success(`Task "${currentTask?.name}" completed! 🎉`);
+        
+        // Remove completed task from UI immediately
+        setTasksList(prev => prev.filter(task => task.id !== taskId));
+        
+        // Refresh page to update project progress
+        setTimeout(() => {
+          router.refresh();
+        }, 1000);
+      } else {
+        // For other status changes, update UI optimistically
+        setTasksList(prev => 
+          prev.map(task => 
+            task.id === taskId ? { ...task, status: newStatus } : task
+          )
+        );
+      }
+
+      await updateTaskStatus(taskId, newStatus);
+    } catch (error) {
+      console.error("Failed to update task status:", error);
+      
+      // Revert optimistic update on error
+      setTasksList(tasks || []);
+      toast.error("Failed to update task status. Please try again.");
+    }
   };
 
   const getStatusConfig = (status: TASK_STATUS) => {
@@ -135,7 +173,20 @@ export default function TasksCard({
                   <div className="flex items-start justify-between gap-4 relative z-10">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-3">
-                        <StatusIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                        <button
+                          onClick={() => {
+                            const nextStatus = 
+                              singleTask.status === TASK_STATUS.NOT_STARTED 
+                                ? TASK_STATUS.STARTED 
+                                : singleTask.status === TASK_STATUS.STARTED 
+                                ? TASK_STATUS.COMPLETED 
+                                : TASK_STATUS.NOT_STARTED;
+                            handleStatusChange(singleTask.id, nextStatus);
+                          }}
+                          className="hover:scale-110 transition-transform cursor-pointer"
+                        >
+                          <StatusIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                        </button>
                         <h3 className="font-semibold text-gray-800 dark:text-gray-100">
                           {singleTask.name}
                         </h3>
