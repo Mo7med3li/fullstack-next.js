@@ -12,7 +12,7 @@ export default async function page() {
   const tasks = await getTasks();
 
   return (
-    <div className="w-full h-full pr-6">
+    <div className="w-full h-full pr-6 bg-gray-50 dark:bg-gray-900">
       <div className=" h-full items-stretch justify-center min-h-[content]">
         {/* Greeting component */}
         <div className="flex-1 grow flex">
