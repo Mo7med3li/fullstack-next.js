@@ -209,6 +209,12 @@ export default function TasksCard({
                         taskName={singleTask.name}
                         onDelete={() => handleOptimisticDelete(singleTask.id)}
                       />
+
+                      <div
+                        className={`p-1.5 sm:p-2 rounded-lg transition-all duration-200 ${statusConfig.color}`}
+                      >
+                        {statusConfig.label}
+                      </div>
                     </div>
                   </div>
                 </div>
