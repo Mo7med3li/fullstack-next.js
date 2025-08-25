@@ -86,6 +86,14 @@ export const deleteProject = async (projectId: string) => {
   });
 };
 
+export const deleteTask = async (taskId: string) => {
+  return fetcher({
+    url: `${process.env.NEXT_PUBLIC_API_URL}/delete-task?id=${taskId}`,
+    method: "DELETE",
+    json: true,
+  });
+};
+
 export const logout = () => {
   return fetcher({
     url: `${process.env.NEXT_PUBLIC_API_URL}/logout`,

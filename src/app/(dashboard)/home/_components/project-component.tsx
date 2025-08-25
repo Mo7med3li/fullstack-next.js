@@ -1,4 +1,3 @@
-import Link from "next/link";
 import fetchProjects from "../_api/get-projecrts";
 import ProjectCard from "./project-card";
 import NewProjectModal from "../../project/[id]/_components/new-project-modal";

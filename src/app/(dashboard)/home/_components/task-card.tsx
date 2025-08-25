@@ -1,15 +1,16 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Circle, Clock, Plus } from "lucide-react";
 import { TASK_STATUS } from "@prisma/client";
 import { Button } from "@/components/ui/button";
-import { getTasks } from "../_api/get-tasks";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import NewTaskModal from "@/components/new-task-modal";
 import NewProjectModal from "../../project/[id]/_components/new-project-modal";
-
-export default async function TasksCard({
+import DeleteTaskModal from "@/components/delete-task-modal";
+export default function TasksCard({
   tasks,
   title,
   projectId = "general",
@@ -22,8 +23,17 @@ export default async function TasksCard({
   projectName?: string;
   hasProjects?: boolean;
 }) {
-  // Fetch tasks
-  const tasksList = tasks || (await getTasks());
+  const [tasksList, setTasksList] = useState<Task[]>(tasks || []);
+
+  // Update tasks when props change (after new task creation)
+  useEffect(() => {
+    setTasksList(tasks || []);
+  }, [tasks]);
+
+  const handleOptimisticDelete = (taskId: string) => {
+    // Optimistically remove from UI
+    setTasksList(prev => prev.filter(task => task.id !== taskId));
+  };
 
   const getStatusConfig = (status: TASK_STATUS) => {
     // Check Status
@@ -152,12 +162,20 @@ export default async function TasksCard({
                       )}
                     </div>
 
-                    <Badge
-                      variant="secondary"
-                      className={`${statusConfig.color} text-xs font-medium border-0`}
-                    >
-                      {statusConfig.label}
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge
+                        variant="secondary"
+                        className={`${statusConfig.color} text-xs font-medium border-0`}
+                      >
+                        {statusConfig.label}
+                      </Badge>
+                      
+                      <DeleteTaskModal
+                        taskId={singleTask.id}
+                        taskName={singleTask.name}
+                        onDelete={() => handleOptimisticDelete(singleTask.id)}
+                      />
+                    </div>
                   </div>
 
                   {/* Hover border glow */}

@@ -4,10 +4,12 @@ import GreetingsSkeleton from "@/lib/skeleton/greeting.skeleton";
 import ProjectComponent from "./_components/project-component";
 import TasksCard from "./_components/task-card";
 import fetchProjects from "./_api/get-projecrts";
+import { getTasks } from "./_api/get-tasks";
 
 export default async function page() {
-  // Fetch projects to determine context
+  // Fetch projects and tasks
   const { projects } = await fetchProjects();
+  const tasks = await getTasks();
 
   return (
     <div className="w-full h-full pr-6">
@@ -28,6 +30,7 @@ export default async function page() {
           <div className="w-full">
             {/* TasksCards  */}
             <TasksCard
+              tasks={tasks}
               projectId={projects.length > 0 ? projects[0].id : "general"}
               projectName={
                 projects.length > 0 ? projects[0].name : "General Tasks"
