@@ -12,8 +12,8 @@ export default async function page() {
   const tasks = await getTasks();
 
   return (
-    <div className="w-full h-full pr-6 bg-gray-50 dark:bg-gray-900">
-      <div className=" h-full items-stretch justify-center min-h-[content]">
+    <div className="w-full h-full px-3 sm:px-4 md:px-6 bg-gray-50 dark:bg-gray-900">
+      <div className="h-full items-stretch justify-center min-h-[content] space-y-4 md:space-y-6">
         {/* Greeting component */}
         <div className="flex-1 grow flex">
           <Suspense fallback={<GreetingsSkeleton />}>
@@ -21,12 +21,12 @@ export default async function page() {
           </Suspense>
         </div>
 
-        <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3">
+        <div className="flex flex-2 grow items-center flex-wrap -mx-2 sm:-mx-3">
           {/* Projects */}
           <ProjectComponent />
         </div>
 
-        <div className="mt-6 flex-2 grow w-full flex">
+        <div className="flex-2 grow w-full flex">
           <div className="w-full">
             {/* TasksCards  */}
             <TasksCard

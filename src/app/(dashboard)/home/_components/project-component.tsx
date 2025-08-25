@@ -7,15 +7,17 @@ const ProjectComponent = async () => {
   const { projects } = await fetchProjects();
   return (
     <div className="flex flex-col w-full gap-4">
-      <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full px-2 sm:px-3">
         {projects.map((project) => (
-          <div key={project.id} className="w-1/3 p-3">
+          <div key={project.id}>
             <ProjectCard project={project} />
           </div>
         ))}
       </div>
       {/* Add new */}
-      <NewProjectModal />
+      <div className="flex justify-center px-2 sm:px-3">
+        <NewProjectModal />
+      </div>
     </div>
   );
 };
