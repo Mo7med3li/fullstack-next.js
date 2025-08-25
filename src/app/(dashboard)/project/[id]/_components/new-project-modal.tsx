@@ -36,7 +36,7 @@ const NewProjectModal = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="hover:scale-105 transition-all ease-in-out duration-200 w-full bg-zinc-800">
+        <Button className="transition-all ease-in-out duration-200 w-full bg-blue-600 hover:bg-blue-700 text-white">
           <Plus /> New Project
         </Button>
       </DialogTrigger>

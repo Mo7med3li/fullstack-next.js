@@ -4,6 +4,7 @@ import LogoutButton from "./logout";
 import SidebarLink from "./sidebar-links";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Building2 } from "lucide-react";
+import { ModeToggle } from "./mode-toggle";
 
 const links = [
   { label: "Home", icon: "Home", link: "/home" },
@@ -13,20 +14,45 @@ const links = [
 
 const Sidebar = () => {
   return (
-    <Card className="h-full border-sidebar-border bg-sidebar">
-      <CardHeader className="pb-4">
-        <CardTitle className="flex items-center gap-2 text-white">
-          <Building2 className="h-6 w-6 text-white" />
-          <span className="text-lg font-bold text-white">ProjectTask</span>
+    <Card className="sidebar h-full border-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-emerald-600/10" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl" />
+
+      <CardHeader className="pb-6 relative z-10">
+        <CardTitle className="flex items-center justify-between text-white space-x-3">
+          <div className="flex items-center gap-3">
+            <div className="relative sidebar-float">
+              <Building2 className="h-7 w-7 text-blue-400" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-white">ProjectTask</span>
+              <span className="text-xs text-gray-400 font-normal">
+                Dashboard
+              </span>
+            </div>
+          </div>
+
+          {/* Mode Toggle */}
+          <ModeToggle />
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-2 px-4">
-        <nav className="space-y-1">
+
+      <CardContent className="flex flex-col gap-3 px-4 relative z-10">
+        <nav className="space-y-2">
           {links.map((link) => (
             <SidebarLink key={link.link} link={link} />
           ))}
         </nav>
-        <div className="mt-auto pt-4">
+
+        {/* Divider */}
+        <div className="my-4">
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
+        </div>
+
+        <div className="mt-auto">
           <LogoutButton />
         </div>
       </CardContent>

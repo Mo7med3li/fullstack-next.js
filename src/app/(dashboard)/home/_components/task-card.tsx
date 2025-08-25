@@ -23,19 +23,19 @@ export default async function TasksCard({
       case TASK_STATUS.COMPLETED:
         return {
           icon: CheckCircle2,
-          color: "bg-green-400 text-primary-foreground",
+          color: "bg-emerald-500 text-white",
           label: "Completed",
         };
       case TASK_STATUS.STARTED:
         return {
           icon: Clock,
-          color: "bg-blue-400 text-secondary-foreground",
+          color: "bg-blue-500 text-white",
           label: "In Progress",
         };
       default:
         return {
           icon: Circle,
-          color: "bg-muted text-muted-foreground",
+          color: "bg-gray-400 text-white",
           label: "Pending",
         };
     }
@@ -49,7 +49,7 @@ export default async function TasksCard({
           <CardTitle className="text-2xl font-semibold text-foreground">
             {title || "My Tasks"}
           </CardTitle>
-          <Button className="gap-2 hover:scale-105 transition-transform bg-zinc-800">
+          <Button className="gap-2 hover:scale-105 transition-transform bg-blue-600 hover:bg-blue-700 text-white">
             <Plus className="h-4 w-4" />
             Create Task
           </Button>
@@ -68,25 +68,25 @@ export default async function TasksCard({
               return (
                 <Card
                   key={singleTask.id}
-                  className="p-4 hover:shadow-md transition-shadow border-l-4 border-l-primary/20 bg-transparent"
+                  className="p-4 hover:shadow-md transition-shadow border-l-4 border-l-blue-500/30 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-3">
-                        <StatusIcon className="h-5 w-5 text-primary" />
-                        <h3 className="font-semibold text-card-foreground">
+                        <StatusIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                        <h3 className="font-semibold text-gray-800 dark:text-gray-100">
                           {singleTask.name}
                         </h3>
                       </div>
 
-                      <p className="text-sm text-muted-foreground leading-relaxed ml-8">
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ml-8">
                         {singleTask.description}
                       </p>
 
                       {singleTask.due && (
                         <div className="flex items-center gap-2 ml-8">
-                          <Clock className="h-3 w-3 text-muted-foreground" />
-                          <span className="text-xs text-muted-foreground italic">
+                          <Clock className="h-3 w-3 text-gray-500 dark:text-gray-400" />
+                          <span className="text-xs text-gray-500 dark:text-gray-400 italic">
                             Due: {new Date(singleTask.due).toLocaleDateString()}
                           </span>
                         </div>

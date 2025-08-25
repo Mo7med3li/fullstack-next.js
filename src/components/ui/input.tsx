@@ -5,7 +5,7 @@ import { Eye, EyeOff } from "lucide-react";
 import * as React from "react";
 
 const baseClasses =
-  "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
+  "flex h-10 w-full outline-none rounded-md bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-none  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
 
 const iconClassBasses =
   "absolute top-1/2 z-50 mt-[1px] size-[18px] -translate-y-1/2 text-zinc-400 dark:text-zinc-50 cursor-pointer";

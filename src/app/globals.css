@@ -24,24 +24,24 @@ body {
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 220 70% 50%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 160 60% 45%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --ring: 220 70% 50%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
     --radius: 0.5rem;
   }
   .dark {
@@ -51,19 +51,19 @@ body {
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 220 70% 50%;
     --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 160 60% 45%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --ring: 220 70% 50%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -76,22 +76,7 @@ body {
   box-sizing: border-box;
 }
 
-.rainbow-mesh {
-  background-color: hsla(0, 100%, 50%, 1);
-  background-image: radial-gradient(
-      at 40% 20%,
-      hsla(28, 100%, 74%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
-    radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
-    radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
-    radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
-}
-
-.candy-mesh {
+/* .candy-mesh {
   background-color: #ff99ee;
   background-image: radial-gradient(
       at 99% 6%,
@@ -102,7 +87,7 @@ body {
     radial-gradient(at 53% 27%, hsla(271, 78%, 63%, 1) 0px, transparent 50%),
     radial-gradient(at 89% 89%, hsla(317, 89%, 70%, 1) 0px, transparent 50%),
     radial-gradient(at 35% 44%, hsla(337, 92%, 61%, 1) 0px, transparent 50%);
-}
+} */
 
 .glass {
   backdrop-filter: blur(16px) saturate(180%);
@@ -120,4 +105,87 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Project color variations for better visual distinction */
+.project-color-1 {
+  --project-primary: 220 70% 50%;
+  --project-accent: 160 60% 45%;
+}
+
+.project-color-2 {
+  --project-primary: 280 65% 60%;
+  --project-accent: 340 75% 55%;
+}
+
+.project-color-3 {
+  --project-primary: 30 80% 55%;
+  --project-accent: 45 85% 60%;
+}
+
+.project-color-4 {
+  --project-primary: 200 75% 55%;
+  --project-accent: 180 70% 50%;
+}
+
+.project-color-5 {
+  --project-primary: 320 70% 55%;
+  --project-accent: 300 75% 60%;
+}
+
+.project-color-6 {
+  --project-primary: 15 85% 60%;
+  --project-accent: 25 80% 55%;
+}
+
+/* Enhanced sidebar animations and effects */
+@keyframes sidebar-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.sidebar-glow {
+  animation: sidebar-glow 3s ease-in-out infinite;
+}
+
+.sidebar-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Smooth transitions for all sidebar elements */
+.sidebar * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
